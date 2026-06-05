@@ -97,7 +97,10 @@ if __name__ == "__main__":
         reader = csv.reader(csvfile, delimiter=",")
         try:
             last_entry = deque(reader, maxlen=1)[0]
-            today_time = int(last_entry[1])
+            if last_entry[0] == str(current_date):     
+                today_time = int(last_entry[1])
+            else:
+                today_time = 0
         except IndexError:
             today_time = 0
         except ValueError:
